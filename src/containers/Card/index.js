@@ -1,5 +1,7 @@
 import React from 'react'
 import IMG from '../Img'
+//IMG is resuable component,accepts two params src and alt.
+
 let CARD = ({
   headline,
   snippet,

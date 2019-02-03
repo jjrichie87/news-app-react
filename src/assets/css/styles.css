@@ -103,13 +103,14 @@ body{
 	background-color: #ddd;
 }
 .card{
-	background: #6c757d!important;
+	background: #1e212c;
 	color:#fff;
 }
 .card .btn {
 	text-align: left;
-	color:#fff;
+	color:#ccc;
 }
+
 .accordion .card:first-of-type,.accordion .card:not(:first-of-type) .card-header:first-child,.accordion .card:not(:first-of-type):not(:last-of-type){
 	border-radius:.5rem !important;
 }

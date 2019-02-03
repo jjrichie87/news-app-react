@@ -1,8 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { sayHello } from '../../actions'
 
-let Footer = ({ whatsUp, stateObject, saySomething }) => (
+let Footer = ({  }) => (
 
   <footer className="container" id="footerCtr">
     <p className="float-right"><a href="#">Back to top</a></p>
@@ -16,7 +15,6 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
-  saySomething: () => { dispatch(sayHello()) }
 })
 
 Footer = connect(

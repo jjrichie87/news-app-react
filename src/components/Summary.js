@@ -1,6 +1,6 @@
 import React from 'react'
 import CARD from '../containers/Card'
-
+//CARD is a reusable container.
 const Summary = ({ dateVal, isFetching, summary }) => {
   //console.log(summary)
   let newsList = "";
@@ -18,7 +18,6 @@ const Summary = ({ dateVal, isFetching, summary }) => {
       <div className="accordion" id="accordionCtr">
         {loadDocs &&
           newsList.map((item, index) =>
-
             <CARD key={index}
               headline={item.headline.main}
               snippet={item.lead_paragraph}

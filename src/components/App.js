@@ -17,16 +17,19 @@ class App extends Component {
       date: date
     });
   };
+
+  // Fire this to keep updating the clock
   componentDidMount() {
     setInterval(() => {
       this.tick();
     }, 1000);
-
+    //Fire API.
     // Amsterdam just a default string
     this.props.actions.fetchNews("amsterdam");
     //console.log(this.props.isFetching)
   }
   render() {
+    // Has TopNav, Summary, Footer as containers, prop values are passed from state.
     return (
       <div className="container">
         <ErrorBoundary>

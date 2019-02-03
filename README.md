@@ -1,9 +1,7 @@
 # news app 
 
-## Available Commands
-
+- `npm install` - Install all the packages specified in package.json
 - `npm start` - start the dev server
-- `npm run dev` - create a developer build in `dist` folder
-- `npm run build` - create a production ready build in `dist` folder
 - `npm test` - run all tests
 
+Webpack has been used to package the app.
