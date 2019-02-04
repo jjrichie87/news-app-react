@@ -6,11 +6,11 @@ export const fetchNews = (categoryName) => dispatch => {
     dispatch(fetchNewsBegin());
     //On API Call success
     const onSuccess = response => {
-        setTimeout(function () {
+        //setTimeout(function () {
             const json = response;
             //console.log(json);
             dispatch(fetchNewsSuccess(json.data));
-        }, 2000);
+       // }, 2000);
     };
     //On API Call Error
     const onError = error => {
@@ -20,15 +20,16 @@ export const fetchNews = (categoryName) => dispatch => {
         }
     };
 
-  
-   newsResp(categoryName).then(onSuccess)
-   .catch(onError);
+
+    newsResp(categoryName).then(onSuccess)
+        .catch(onError);
 };
-export const newsResp = (categoryName) => { 
+
+export const newsResp = (categoryName) => {
     //Actual api call, accepts category to be dynamic   
     return axios
         .get("http://api.nytimes.com/svc/search/v2/articlesearch.json?q=" + categoryName + "&api-key=b75da00e12d54774a2d362adddcc9bef");
-   }
+}
 //Fired when API is invoked.
 export const fetchNewsBegin = () => ({
     type: constants.FETCH_NEWS_BEGIN

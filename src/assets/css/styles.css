@@ -1,3 +1,6 @@
+h1{
+    display: block;
+    clear: both;}
 body,
 .navbar {
 	min-width: 320px;
@@ -6,7 +9,7 @@ body,
 }
 body{
 
-	background: #5a5a5a;
+	background: #151923;
     color: #fff;
 }
 .mainCtr,
@@ -109,6 +112,9 @@ body{
 .card .btn {
 	text-align: left;
 	color:#ccc;
+}
+.card-header .btn{
+	color:#059296;
 }
 
 .accordion .card:first-of-type,.accordion .card:not(:first-of-type) .card-header:first-child,.accordion .card:not(:first-of-type):not(:last-of-type){
