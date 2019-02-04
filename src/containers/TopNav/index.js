@@ -1,5 +1,6 @@
 import React from 'react';
-import SearchApp from '../Search';
+import SearchComp from '../Search';
+//SearchComp is a stateful component
 let Topnav = ({ summary }) => {
   let summaryList = null;
   const loadOptions = (summary) ? true : false;
@@ -16,7 +17,7 @@ let Topnav = ({ summary }) => {
         </div>
         <div className="navbar-right">
           {loadOptions && 
-          <SearchApp searchOptions={summaryList} 
+          <SearchComp searchOptions={summaryList} 
           />}
           
         </div>

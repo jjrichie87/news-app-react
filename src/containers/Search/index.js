@@ -28,7 +28,7 @@ function renderSuggestion(suggestion) {
     <span>{suggestion}</span>
   );
 }
-class SearchApp extends Component {
+class SearchComp extends Component {
   constructor() {
     super();
     this.state = {
@@ -139,8 +139,8 @@ const mapDispatchToProps = (dispatch) => ({
   actions: bindActionCreators(actions, dispatch)
 })
 
-SearchApp = connect(
+SearchComp = connect(
   mapStateToProps,
   mapDispatchToProps
-)(SearchApp)
-export default SearchApp
+)(SearchComp)
+export default SearchComp
