@@ -170,25 +170,13 @@ body{
 		transform: rotate(360deg);
 	}
 }
-.glyphicon {
-    position: relative;
-    top: 1px;
-    display: inline-block;
-    font-family: "Glyphicons Halflings";
-    font-style: normal;
-    font-weight: 400;
-    line-height: 1;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-}
-.glyphicon-search:before {
-    content: "\e003";
-}
+
 .navbar-right i{
 	top: -22px;
     right: 5px;
     position: relative;
     /* right: -85%; */
     color: gray;
-    float: right;
+	float: right;
+	cursor: pointer;
 }

@@ -20,7 +20,7 @@ let Topnav = ({ summary }) => {
           {loadOptions && 
           <SearchApp searchOptions={summaryList} 
           />}
-          {loadOptions && <i className="fas fa-search"></i>}
+          
         </div>
       </div>
     </nav>

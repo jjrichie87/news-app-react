@@ -11,7 +11,7 @@ function escapeRegexCharacters(str) {
 function getSuggestions(value) {
   const escapedValue = escapeRegexCharacters(value.trim());
   const regex = new RegExp('^' + escapedValue, 'i');
-
+  //console.log("getsugg == "+searchOptions.filter(language => regex.test(language)))
   return searchOptions.filter(language => regex.test(language));
 }
 
@@ -39,25 +39,45 @@ class SearchApp extends Component {
   }
 
   onChange = (event, { newValue, method }) => {
+    //console.log(newValue)
     this.setState({
       value: newValue
     });
   };
+  onKeyPress = (event) => {
+    //console.log(event.key + event.charCode);
+    if (event.key === 'Enter') {
+      const newValue = document.getElementsByClassName("react-autosuggest__input")[0].value;
+      //console.log("=="+ newValue)
+      if (newValue) {
+        this.props.actions.fetchNews(newValue);
+      }
+    }
+
+  };
 
   onSuggestionSelected = (event, { suggestion, suggestionValue, suggestionIndex, sectionIndex, method }) => {
-    this.suggestionSelected = true;
     //console.log(suggestionValue);
+    this.suggestionSelected = true;
     this.props.actions.fetchNews(suggestionValue);
   };
+
+  searchClick = () => {
+    const newValue = document.getElementsByClassName("react-autosuggest__input")[0].value;
+    //console.log("=="+ newValue)
+    if (newValue) {
+      this.props.actions.fetchNews(newValue);
+    }
+  }
 
   onSuggestionsFetchRequested = ({ value }) => {
     const suggestions = getSuggestions(value);
     const isInputBlank = value.trim() === '';
-    const noSuggestions = !isInputBlank && suggestions.length === 0;
+    //const noSuggestions = !isInputBlank && suggestions.length === 0;
 
     this.setState({
       suggestions,
-      noSuggestions
+      //noSuggestions
     });
   };
 
@@ -76,14 +96,15 @@ class SearchApp extends Component {
       //console.log(searchOptions.indexOf(item.section_name))
       if (searchOptions.indexOf(item.section_name) === -1) {
         searchOptions.push(item.section_name);
-      //  console.log(searchOptions)
+        //  console.log(searchOptions)
       }
     });
-    const { value, suggestions, noSuggestions } = this.state;
+    const { value, suggestions/*, noSuggestions */ } = this.state;
     const inputProps = {
       placeholder: "Search",
       value,
-      onChange: this.onChange
+      onChange: this.onChange,
+      onKeyUp: this.onKeyPress
     };
 
     return (
@@ -97,11 +118,12 @@ class SearchApp extends Component {
           onSuggestionSelected={this.onSuggestionSelected}
           renderSuggestion={renderSuggestion}
           inputProps={inputProps} />
-        {
+        <i className="fas fa-search" onClick={this.searchClick}></i>
+        {/*
           noSuggestions &&
           <div className="no-suggestions">
-            No suggestions
-              </div>
+            Category N/A.
+              </div>*/
         }
       </div>
     );
