@@ -1,11 +1,11 @@
-import React, { Component } from 'react'
-import TopNav from '../containers/TopNav'
-import Summary from './Summary'
-import Footer from '../containers/Footer'
-import { connect } from 'react-redux'
-import * as actions from '../actions'
-import { bindActionCreators } from 'redux'
-import ErrorBoundary from '../containers/ErrorBoundary'
+import React, { Component } from 'react';
+import TopNav from '../containers/TopNav';
+import Summary from './Summary';
+import Footer from '../containers/Footer';
+import { connect } from 'react-redux';
+import * as actions from '../actions';
+import { bindActionCreators } from 'redux';
+import ErrorBoundary from '../containers/ErrorBoundary';
 class App extends Component {
 
   constructor(props) {

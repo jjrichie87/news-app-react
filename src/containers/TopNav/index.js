@@ -1,7 +1,5 @@
-import React from 'react'
-
-import SearchApp from '../Search'
-
+import React from 'react';
+import SearchApp from '../Search';
 let Topnav = ({ summary }) => {
   let summaryList = null;
   const loadOptions = (summary) ? true : false;
@@ -13,8 +11,8 @@ let Topnav = ({ summary }) => {
 
     <nav className="navbar navbar-dark fixed-top bg-dark ">
       <div className="container">
-        <div className="navbar-left">
-          <a className="navbar-brand" href="#">NY Times</a>
+        <div className="navbar-left svg">
+          <a href="#">Ny Times</a>
         </div>
         <div className="navbar-right">
           {loadOptions && 

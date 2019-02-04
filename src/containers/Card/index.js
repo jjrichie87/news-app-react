@@ -1,5 +1,5 @@
-import React from 'react'
-import IMG from '../Img'
+import React from 'react';
+import IMG from '../Img';
 //IMG is resuable component,accepts two params src and alt.
 
 let CARD = ({

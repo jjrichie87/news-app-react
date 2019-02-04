@@ -1,6 +1,4 @@
-import React from 'react'
-import { connect } from 'react-redux'
-import { sayHello } from '../../actions'
+import React from 'react';
 
 let IMG = ({ src, alt }) => (
 

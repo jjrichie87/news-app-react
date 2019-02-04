@@ -1,8 +1,8 @@
-import React, { Component } from 'react'
-import Autosuggest from 'react-autosuggest'
-import { connect } from 'react-redux'
-import * as actions from '../../actions'
-import { bindActionCreators } from 'redux'
+import React, { Component } from 'react';
+import Autosuggest from 'react-autosuggest';
+import { connect } from 'react-redux';
+import * as actions from '../../actions';
+import { bindActionCreators } from 'redux';
 const searchOptions = [];
 function escapeRegexCharacters(str) {
   return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
@@ -116,6 +116,7 @@ class SearchApp extends Component {
           getSuggestionValue={getSuggestionValue}
           shouldRenderSuggestions={shouldRenderSuggestions}
           onSuggestionSelected={this.onSuggestionSelected}
+          focusInputOnSuggestionClick={false}
           renderSuggestion={renderSuggestion}
           inputProps={inputProps} />
         <i className="fas fa-search" onClick={this.searchClick}></i>

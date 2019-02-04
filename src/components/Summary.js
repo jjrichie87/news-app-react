@@ -1,5 +1,5 @@
-import React from 'react'
-import CARD from '../containers/Card'
+import React from 'react';
+import CARD from '../containers/Card';
 //CARD is a reusable container.
 const Summary = ({ dateVal, isFetching, summary }) => {
   //console.log(summary)

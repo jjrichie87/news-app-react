@@ -1,17 +1,21 @@
-h1{
-    display: block;
-    clear: both;}
+h1 {
+	display: block;
+	clear: both;
+	color: #D35400;
+}
+
 body,
 .navbar {
 	min-width: 320px;
 	width: auto !important;
 	width: 320px;
 }
-body{
 
+body {
 	background: #151923;
-    color: #fff;
+	color: #fff;
 }
+
 .mainCtr,
 #spinnerCtr {
 	margin-top: 4rem;
@@ -36,14 +40,14 @@ body{
 }
 
 .react-autosuggest__input {
-  height: 30px;
-  padding: 10px;
-  font-family: Helvetica, sans-serif;
-  font-weight: 300;
-  font-size: 16px;
-  border: 1px solid #aaa;
-  border-radius: 4px;
-  width: 155PX;
+	height: 30px;
+	padding: 10px;
+	font-family: Helvetica, sans-serif;
+	font-weight: 300;
+	font-size: 16px;
+	border: 1px solid #aaa;
+	border-radius: 4px;
+	width: 155PX;
 }
 
 .react-autosuggest__input--focused {
@@ -77,7 +81,7 @@ body{
 	width: 100%;
 	border: 1px solid #aaa;
 	background: #6c757d!important;
-	color:fff;
+	color: fff;
 	font-family: Helvetica, sans-serif;
 	font-weight: 300;
 	font-size: 16px;
@@ -105,20 +109,25 @@ body{
 .react-autosuggest__suggestion--highlighted {
 	background-color: #ddd;
 }
-.card{
+
+.card {
 	background: #1e212c;
-	color:#fff;
-}
-.card .btn {
-	text-align: left;
-	color:#ccc;
-}
-.card-header .btn{
-	color:#059296;
+	color: #fff;
 }
 
-.accordion .card:first-of-type,.accordion .card:not(:first-of-type) .card-header:first-child,.accordion .card:not(:first-of-type):not(:last-of-type){
-	border-radius:.5rem !important;
+.card .btn {
+	text-align: left;
+	color: #ccc;
+}
+
+.card-header .btn {
+	color: #059296;
+}
+
+.accordion .card:first-of-type,
+.accordion .card:not(:first-of-type) .card-header:first-child,
+.accordion .card:not(:first-of-type):not(:last-of-type) {
+	border-radius: .5rem !important;
 }
 
 .accordion .card {
@@ -171,12 +180,18 @@ body{
 	}
 }
 
-.navbar-right i{
+.navbar-right i {
 	top: -22px;
-    right: 5px;
-    position: relative;
-    /* right: -85%; */
-    color: gray;
+	right: 5px;
+	position: relative;
+	/* right: -85%; */
+	color: gray;
 	float: right;
 	cursor: pointer;
+}
+.navbar-left.svg a	{
+	line-height: 15px;
+	font-size: 30px;
+    color: #D35400;
+    font-weight: bold !important;
 }
