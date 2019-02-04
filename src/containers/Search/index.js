@@ -76,7 +76,7 @@ class SearchApp extends Component {
       //console.log(searchOptions.indexOf(item.section_name))
       if (searchOptions.indexOf(item.section_name) === -1) {
         searchOptions.push(item.section_name);
-        console.log(searchOptions)
+      //  console.log(searchOptions)
       }
     });
     const { value, suggestions, noSuggestions } = this.state;
