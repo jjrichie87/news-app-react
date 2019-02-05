@@ -1,6 +1,6 @@
 import * as actions from "../index";
 import axios from 'axios';
-
+//Should have been better case.
 jest.mock('axios');
 it('should fetch a list of news', () => {
     const getSpy = jest.spyOn(axios, 'get');
