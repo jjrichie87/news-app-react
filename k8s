@@ -1,0 +1,394 @@
+    1  ifconfg
+    2  ifconfig
+    3  yum update
+    4  ifconfig
+    5  yum update
+    6  ping 192.168.2.148
+    7  hostnamectl set-hostname richie.master.com
+    8  systemctl stop firewalld
+    9  systemctl disable firewalld
+   10  sudo swapoff -a
+   11  sudo sed -i '/ swap / s/^/#/' /etc/fstab
+   12  shutdown -r
+   13  kubeadm join 192.168.2.147:6443 --token k65d7x.8nvpyud2t9p81n7d     --discovery-token-ca-cert-hash sha256:356d39bf14e94c48501e8d9a79cfdc0636d163bd89343c31b882ca4b506eb462
+   14  clear
+   15  hostname
+   16  hostnamectl set-hostname jr.master.com
+   17  systemctl stop firewalld
+   18  systemctl disable firewalld
+   19  sudo swapoff -a
+   20  sudo sed -i '/ swap / s/^/#/' /etc/fstab
+   21  shutdown -r
+   22  cleaar
+   23  clear
+   24  docker info
+   25  cat <<EOF > /etc/yum.repos.d/kubernetes.repo
+   26  [kubernetes]
+   27  name=Kubernetes
+   28  baseurl=https://packages.cloud.google.com/yum/repos/kubernetes-el7-x86_64
+   29  enabled=1
+   30  gpgcheck=1
+   31  repo_gpgcheck=1
+   32  gpgkey=https://packages.cloud.google.com/yum/doc/yum-key.gpg https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg
+   33  exclude=kube*
+   34  EOF
+   35  setenforce 0
+   36  sed -i 's/^SELINUX=enforcing$/SELINUX=permissive/' /etc/selinux/config
+   37  yum install -y kubelet kubeadm kubectl --disableexcludes=kubernetes
+   38  systemctl enable --now kubelet
+   39  kubeadm init --ignore-preflight-errors all
+   40  mkdir -p $HOME/.kube
+   41  sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+   42  sudo chown $(id -u):$(id -g) $HOME/.kube/config
+   43  kubectl get nodes
+   44   kubectl get pods --all-namespaces
+   45  kubectl get nodes
+   46  clear
+   47  kubectl get nodes
+   48  clear
+   49  kubectl get nodes
+   50  vi pod.yaml
+   51   kubectl get pods --all-namespaces
+   52  kubectl create ns jjrichie
+   53  kubectl create -f pod.yaml -n=jjrichie
+   54   kubectl get pods --all-namespaces
+   55  kubectl describe pods hello-pod1  -n=jjrichie
+   56  kubeadm restart
+   57  kubeadm reset
+   58  systemctl restart kubelet
+   59  clear
+   60  sudo systemctl start docker
+   61  cat <<EOF > /etc/yum.repos.d/kubernetes.repo
+   62  [kubernetes]
+   63  name=Kubernetes
+   64  baseurl=https://packages.cloud.google.com/yum/repos/kubernetes-el7-x86_64
+   65  enabled=1
+   66  gpgcheck=1
+   67  repo_gpgcheck=1
+   68  gpgkey=https://packages.cloud.google.com/yum/doc/yum-key.gpg https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg
+   69  exclude=kube*
+   70  EOF
+   71  setenforce 0
+   72  sed -i 's/^SELINUX=enforcing$/SELINUX=permissive/' /etc/selinux/config
+   73  yum install -y kubelet kubeadm kubectl --disableexcludes=kubernetes
+   74  2
+   75   
+   76  kubeadm init --ignore-preflight-errors all
+   77  kubectl get nodes
+   78  Unable to connect to the server: x509:
+   79  docker rm -f -v $(docker ps -q)
+   80  systemctl stop kubelet
+   81  systemctl stop docker
+   82  find /var/lib/kubelet | xargs -n 1 findmnt -n -t tmpfs -o TARGET -T | uniq | xargs -r umount -v
+   83  rm -r -f /etc/kubernetes /var/lib/kubelet /var/lib/etcd
+   84  kubeadm reset
+   85  iptables --flush
+   86  sudo rm -rf ~/.kube
+   87  shutdown -r
+   88  docker info
+   89  cat <<EOF > /etc/yum.repos.d/kubernetes.repo
+   90  [kubernetes]
+   91  name=Kubernetes
+   92  baseurl=https://packages.cloud.google.com/yum/repos/kubernetes-el7-x86_64
+   93  enabled=1
+   94  gpgcheck=1
+   95  repo_gpgcheck=1
+   96  gpgkey=https://packages.cloud.google.com/yum/doc/yum-key.gpg https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg
+   97  exclude=kube*
+   98  EOF
+   99  setenforce 0
+  100  sed -i 's/^SELINUX=enforcing$/SELINUX=permissive/' /etc/selinux/config
+  101  yum install -y kubelet kubeadm kubectl --disableexcludes=kubernetes
+  102  systemctl enable --now kubelet
+  103  kubeadm init --ignore-preflight-errors all
+  104  mkdir -p $HOME/.kube
+  105  sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+  106  sudo chown $(id -u):$(id -g) $HOME/.kube/config
+  107  kubectl get nodes
+  108  kubectl get pods --all-namespaces
+  109  kubectl get nodes
+  110  kubeadm reset cleanup-node
+  111  cd $HOME/.kube/config
+  112  cd $HOME/.kube/
+  113  ls
+  114  rm config
+  115  ls
+  116  rm cache
+  117  rmdir cache
+  118  clear
+  119  kubectl get nodes
+  120  cd .
+  121  cd ..
+  122  bash
+  123  clear
+  124  hostnamectl set-hostname jrichie.master.com
+  125  systemctl stop firewalld
+  126  systemctl disable firewalld
+  127  sudo swapoff -a
+  128  sudo sed -i '/ swap / s/^/#/' /etc/fstab
+  129  shutdown -r
+  130  sudo yum install -y yum-utils device-mapper-persistent-data lvm2
+  131  sudo yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+  132  sudo yum install –y https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+  133  sudo yum-config-manager --enable rhui-REGION-rhel-server-extras
+  134  sudo yum install -y docker-ce
+  135  sudo yum install docker-ce
+  136  sudo systemctl enable docker
+  137  sudo systemctl start docker
+  138  cat <<EOF > /etc/yum.repos.d/kubernetes.repo
+[kubernetes]
+name=Kubernetes
+baseurl=https://packages.cloud.google.com/yum/repos/kubernetes-el7-x86_64
+enabled=1
+gpgcheck=1
+repo_gpgcheck=1
+gpgkey=https://packages.cloud.google.com/yum/doc/yum-key.gpg https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg
+exclude=kube*
+EOF
+
+  139  etenforce 0
+  140  sed -i 's/^SELINUX=enforcing$/SELINUX=permissive/' /etc/selinux/config
+  141  yum install -y kubelet kubeadm kubectl --disableexcludes=kubernetes
+  142  systemctl enable --now kubelet
+  143  kubeadm init --ignore-preflight-errors all
+  144  kubectl get nodes
+  145  mkdir -p $HOME/.kube
+  146  sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+  147  sudo chown $(id -u):$(id -g) $HOME/.kube/config
+  148  kubectl get nodes
+  149  kubectl get nodes
+  150  vi replicapod.yaml
+  151  kubectl get nodes
+  152  kubectl apply -f "https://cloud.weave.works/k8s/net?k8s-version=$(kubectl version | base64 | tr -d '\n')"
+  153  kubectl get nodes
+  154  kubectl get ns
+  155  kubectl create ns jjrichiens
+  156  kubectl create -f replicapod.yaml -n=jjrichiens
+  157  kubectl get nodes
+  158  kubectl get pods
+  159  kubectl get pods -n=jjrichiens
+  160  kubectl get nodes
+  161  kubectl get rc  -n=jjrichiens
+  162  kubectl scale --replicas=10 rc/hello-rc -n=rajesh
+  163  kubectl scale --replicas=1 rc/hello-rc -n=jjrichiens
+  164  kubectl get rc  -n=jjrichiens
+  165  kubectl scale --replicas=3 rc/hello-rc -n=jjrichiens
+  166  kubectl get rc  -n=jjrichiens
+  167  kubectl get rc  -n=jjrichiens
+  168  kubectl scale --replicas=1 rc/hello-rc -n=jjrichiens
+  169  kubectl get rc  -n=jjrichiens
+  170  kubectl describe pod hello-pod -n=jjrichiens
+  171  kubectl describe pod hello-rc -n=jjrichiens
+  172  curl http://10.44.0.1:80
+  173  vi replicapod.yaml
+  174  kubectl get rc  -n=jjrichiens
+  175  kubectl get pods
+  176  kubectl get pods -n=jjrichiens
+  177  kubectl delete pods hello-rc-m47nd -n=jjrichiens
+  178  kubectl get pods -n=jjrichiens
+  179  kubectl get pods -n=jjrichiens
+  180  kubectl get pods -n=jjrichiens
+  181  kubectl get nodes
+  182  kubectl describr pods
+  183  kubectl describe pods
+  184  kubectl describe pods -n=jjrichiens
+  185  kubectl exec hello-pod ls / -n=jjrichiens
+  186  kubectl exec hello-rc ls / -n=jjrichiens
+  187  kubectl get pods -n=jjrichiens
+  188* kubectl describe hello-rc-r96nq
+  189  kubectl create -f replicapod.yaml -n=jjrichiens
+  190  clear
+  191  kubectl get pods -n=jjrichiens
+  192  kubectl describe hello-rc-r96nq -n=jjrichiens
+  193  kubectl describe pod hello-rc-r96nq -n=jjrichiens
+  194  kubectl create deployment my-dep --image=scmgalaxy/nginx-devopsschoolv1
+  195  kubectl rollout history deployment/my-dep -n jjrichiens
+  196  kubectl rollout history deployment/my-dep -n jjrichiens
+  197  kubectl rollout history 
+  198  kubectl rollout history deployment/my-dep -n=jjrichiens
+  199  kubectl rollout history deployment/my-dep
+  200  kubectl get pods -n=rajesh -o  -n=jjrichiens
+  201  kubectl get pods  -n=jjrichiens
+  202  kubectl edit deployment/my-dep -n=jjrichiens# scmgalaxy/nginx-devopsschoolv2
+  203  kubectl edit deployment/my-dep -n=jjrichiens
+  204  kubectl rollout history deployment/my-dep -n=jjrichiens
+  205  kubectl rollout history deployment/my-dep 
+  206  clear
+  207  kubectl rollout history deployment/my-dep 
+  208  kubectl edit deployment/my-dep
+  209  kubectl edit deployment/my-dep
+  210  kubectl rollout history deployment/my-dep 
+  211  kubectl rollout -h
+  212  kubectl rollout resume
+  213  kubectl rollout restart
+  214  ubectl rollout status deployment/my-dep -n=jjrichiens
+  215  kubectl rollout status deployment/my-dep -n=jjrichiens
+  216  kubectl rollout status deployment/my-dep 
+  217  kubectl rollout status deployment/my-dep 
+  218  kubectl get pods -n=jjrichie -o wide
+  219* kubectl get pods -n=jjrichiens -o wide
+  220  clear
+  221  kubectl get pods -n=jjrichiens -o wide
+  222  kubectl get pods -n=jjrichiens -o wide
+  223  kubectl create deployment my-dep --image=scmgalaxy/nginx-devopsschoolv1
+  224  kubectl deploy -h
+  225  kubectl edit deployment/my-dep
+  226  kubectl rollout status deployment/my-dep 
+  227  kubectl get pods -n=jjrichiens -o wide
+  228* kubectl get pods -n=jjrichiens
+  229* kubectl rollout history deployment/m
+  230  kubectl get pods -n=jjrichiens
+  231* 
+  232  kubectl rollout status deployment/my-dep -n=jjrichiens
+  233  kubectl create deployment my-dep --image=scmgalaxy/nginx-devopsschoolv1 -n=jjrichiens
+  234  kubectl rollout status deployment/my-dep -n=jjrichiens
+  235  kubectl edit deployment/my-dep -n=jjrichiens
+  236  kubectl rollout status deployment/my-dep -n=jjrichiens
+  237  kubectl get pods -n=jjrichiens -o wide
+  238  kubectl deployment
+  239  kubectl deployment --help
+  240  clearr
+  241  kubectl edit deployment/my-dep -n=jjrichiens
+  242  clear
+  243  kubectl get pods 
+  244  kubectl get pods my-dep-8474b769c7-rgz64 my-dep-8474b769c7-rfm42 my-dep-8474b769c7-lns7b my-dep-8474b769c7-6kznj my-dep-8474b769c7-67kj6 my-dep-8474b769c7-4wm94
+  245  kubectl delete pods my-dep-8474b769c7-rgz64 my-dep-8474b769c7-rfm42 my-dep-8474b769c7-lns7b my-dep-8474b769c7-6kznj my-dep-8474b769c7-67kj6 my-dep-8474b769c7-4wm94
+  246  kubectl get pods 
+  247  kubectl delete deployment/my-dep 
+  248  kubectl delete pods my-dep-8474b769c7-qgxd7 my-dep-8474b769c7-p7b4b my-dep-8474b769c7-nlr2z my-dep-8474b769c7-fdtrt my-dep-8474b769c7-bdfn5 my-dep-8474b769c7-b8q8t my-dep-8474b769c7-25fln 
+  249  kubectl get pods 
+  250  clear
+  251  kubectl get pods 
+  252  kubectl edit deployment/my-dep -n=jjrichiens
+  253  kubectl get pods -n=jjrichiens
+  254  kubectl get nodes
+  255  kubectl get pods -n=jjrichiens -o wide
+  256  kubectl rollout status deployment/my-dep -n=jjrichiens
+  257  kubectl edit deployment/my-dep -n=jjrichiens
+  258  kubectl rollout status deployment/my-dep -n=jjrichiens
+  259  kubectl get pods -n=jjrichiens -o wide
+  260  kubectl get pods -n=jjrichiens -show-labels
+  261  kubectl get pods -n=jjrichiens --show-labels
+  262  kubectl delete deployment/my-dep 
+  263  kubectl delete deployment/my-dep -n=jjrichiens
+  264  kubectl get pods -n=jjrichiens --show-labels
+  265  kubectl delete deployment
+  266  kubectl delete deployment/
+  267  kubectl delete deployment/hello-rc
+  268  kubectl delete deployment.apps
+  269  clear
+  270  kubectl get deployment
+  271  kubectl get deployment -n=jjrichiens
+  272  kubectl create service clusterip my-cs --tcp=5678:80 -n=jjrichiens
+  273  kubectl get svc  -n=jjrichiens
+  274  kubectl get pods -n=jjrichiens -o wide
+  275  kubectl delete pod hello-rc-r96nq -n=jjrichiens
+  276  kubectl get pods -n=jjrichiens -o wide
+  277  curl http://10.96.90.112 
+  278  clear
+  279  ls
+  280  vi pod.yaml
+  281  vi pods.yaml
+  282  vi pod.yaml
+  283  vi pods.yaml
+  284  vi pod.yaml
+  285  clear
+  286  kubectl create pods pods.yaml -n=jjrichiens
+  287  kubectl create pod pods.yaml -n=jjrichiens
+  288  kubectl create -f pods.yaml -n=jjrichiens
+  289  kubectl get pods -n=jjrichiens -o wide
+  290  kubectl create -f pod.yaml -n=jjrichiens
+  291  kubectl get pods -n=jjrichiens -o wide
+  292  clear
+  293  ls
+  294  vi replicapod.yaml
+  295  vi pods-demo.yaml
+  296  clear
+  297  kubectl describe svc my-cs -n=jjrichiens
+  298  kubectl get pods -n=jjrichiens -o wide
+  299  curl https://10.44.0.2
+  300  curl https://10.44.0.2:8080
+  301  curl https://10.44.0.2:80
+  302  clear
+  303  kubectl get pods -n=jjrichiens -o wide
+  304  kubectl describe svc my-cs -n=jjrichiens
+  305  kubectl edit svc my-cs -n=jjrichiens
+  306  kubectl get pods -n=jjrichiens -o wide
+  307  kubectl describe svc my-cs -n=jjrichiens
+  308  curl http://10.44.0.2
+  309  curl http://10.44.0.3
+  310  curl http://10.96.90.112
+  311  curl http://10.96.90.112
+  312  clear
+  313  kubectl describe svc my-cs -n=jjrichiens
+  314  kubectl get pods -n=jjrichiens -o wide
+  315  vi edit pods.yaml
+  316  ls
+  317  vi pods.yaml
+  318  vi pod.yaml
+  319  kubectl apply -f pod.yaml -n=jjrichiens
+  320  kubectl describe pod payment-pod
+  321  kubectl describe pod payment-pod -n=jjrichiens
+  322  kubectl describe svc my-cs -n=jjrichiens
+  323  kubectl get pods -n=jjrichiens -o wide
+  324  watch curl http://10.96.90.112
+  325  watch curl http://10.96.90.112:5978
+  326  watch curl http://10.96.90.112:5678
+  327  kubectl get svc -n=jjrichiens --show-labels;kubectl get pods -n=jjrichiens --show-labels
+  328  ls
+  329  kubectl describe pod hello-rc-jbnqv
+  330  kubectl describe pod hello-rc-jbnqv -n=jjrichiens
+  331  ls
+  332  kubectl delete ReplicationController/hello-rc
+  333  kubectl delete ReplicationController/hello-rc -n=jjrichiens
+  334  kubectl describe pod hello-rc-jbnqv -n=jjrichiens
+  335  kubectl get svc -n=jjrichiens --show-labels;kubectl get pods -n=jjrichiens --show-labels
+  336  kubecl delete svc my-cs -n=jjrichiens
+  337  kubectl delete svc my-cs -n=jjrichiens
+  338  kubectl get svc -n=jjrichiens --show-labels;kubectl get pods -n=jjrichiens --show-labels
+  339  kubectl create service loadbalancer my-lbs --tcp=5678:80 -n=jjrichiens
+  340  kubectl get svc -n=jjrichiens --show-labels;kubectl get pods -n=jjrichiens --show-labels
+  341  curl http://1.101.210.37
+  342  kubectl get svc -n=jjrichiens --show-labels;kubectl get pods -n=jjrichiens --show-labels
+  343  kubectl describe svc my-lbs -n=jjrichiens
+  344  kubectl edit svc my-lbs -n=jjrichiens
+  345  kubectl describe svc my-lbs -n=jjrichiens
+  346  curl http://1.101.210.37
+  347  kubectl get svc -n=jjrichiens --show-labels;kubectl get pods -n=jjrichiens --show-labels
+  348  curl http://10.101.210.37:31896
+  349   curl http://10.101.210.37:5678
+  350  kubectl get svc -n=jjrichiens --show-labels;kubectl get pods -n=jjrichiens --show-labels
+  351   curl http://10.101.210.37:5678
+  352   curl http://10.101.210.37:31896
+  353   curl http://10.101.210.37:31896
+  354  clear
+  355  kubectl get svc -n=jjrichiens --show-labels;kubectl get pods -n=jjrichiens --show-labels
+  356   curl http://10.101.210.37:31896
+  357   curl http://10.101.210.37:5678
+  358  kubectl get nodes
+  359  watch curl http://10.101.210.37:5678
+  360   curl http://10.101.210.37:31896
+  361  watch curl http://10.101.210.37:31896
+  362  clear
+  363  kubectl get svc -n=jjrichiens --show-labels;kubectl get pods -n=jjrichiens --show-labels
+  364  watch curl http://10.101.210.37:31896
+  365  watch curl http://10.101.210.37:5678
+  366  watch curl http://10.101.210.37:5678:31896
+  367  clear
+  368  kubectl get svc -n=jjrichiens --show-labels;kubectl get pods -n=jjrichiens --show-labels
+  369  curl http://10.101.210.37:5678
+  370  kubectl describe svc my-lbs -n=jjrichiens
+  371  http://localhost:5678/
+  372  clear
+  373  kubectl get svc -n=jjrichiens --show-labels;kubectl get pods -n=jjrichiens --show-labels
+  374  kubectl describe svc my-lbs -n=jjrichiens
+  375  curl http://10.101.210.37:31896
+  376  curl http://10.101.210.37:5678
+  377  curl http://10.101.210.37:5678
+  378* curl 192.168.2.147
+  379  curl http://192.168.2.147:31896
+  380  kubectl describe svc my-lbs -n=jjrichiens
+  381  kubectl get svc -n=jjrichiens --show-labels;kubectl get pods -n=jjrichiens --show-labels
+  382  watch curl http://192.168.2.147:31896
+  383  history
+  384  history > history_for_print.txt
